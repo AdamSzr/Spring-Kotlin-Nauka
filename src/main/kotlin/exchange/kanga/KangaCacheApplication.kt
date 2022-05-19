@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class KangaBon2Application
+class KangaCacheApplication
 
 fun main(args: Array<String>) {
-    runApplication<KangaBon2Application>(*args)
+    runApplication<KangaCacheApplication>(*args)
 }

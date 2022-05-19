@@ -5,7 +5,6 @@ import exchange.kanga.domain.bon.model.BillingMode
 import exchange.kanga.domain.bon.model.Partner
 import exchange.kanga.domain.bon.repo.PartnerRepository
 import exchange.kanga.domain.bon.response.PartnerNotExist
-import exchange.kanga.domain.mock.MockData
 import exchange.kanga.utils.common.Response
 import exchange.kanga.utils.isValidEmail
 import org.springframework.stereotype.Service
@@ -15,7 +14,6 @@ import java.time.Duration
 @Service
 class AdminPartnerService(
     private val partnerCache: PartnerCache,
-    private val mockData: MockData,
     private val partnerRepository: PartnerRepository,
 ) {
 
@@ -40,7 +38,6 @@ class AdminPartnerService(
     fun findById(partnerId: String) =
         partnerRepository.findById(partnerId)
 
-    fun generate() = mockData.generatePartners(100)
 
     private fun validateBadRequestPartnerCreate(partner: Partner) =
         partner.voucherExpireTime.toString().contains("-")

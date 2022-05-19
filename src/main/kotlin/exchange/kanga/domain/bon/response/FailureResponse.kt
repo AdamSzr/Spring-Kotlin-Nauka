@@ -29,6 +29,6 @@ class CurrencySellFailure: FailureResponse(4005, "currency-sell-failure")
 
 
 class NoAuthorization: FailureResponse(9997, "no-authorization")
-class LockProblem(override val message: String?): FailureResponse(9996, "lock-problem")
+class LockProblem(val message: String?): FailureResponse(9996, "lock-problem")
 class InvalidCredentials: FailureResponse(9995, "invalid-credentials")
-class SerializeUnknownProblem(override val message: String? = null): FailureResponse(9994, "serialize-problem")
+class SerializeUnknownProblem( val message: String? = null): FailureResponse(9994, "serialize-problem")

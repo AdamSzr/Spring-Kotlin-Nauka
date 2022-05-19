@@ -16,8 +16,6 @@ class Env(private val environment: Environment) {
 
     private companion object : Logger
 
-    @Value("\${pom.version}")
-    private lateinit var pomVersion: String
 
     private lateinit var env: String
 
@@ -25,7 +23,6 @@ class Env(private val environment: Environment) {
     private fun onInit() {
         env = """
         Environment: 
-            Version: $pomVersion
             Env SpringProfile: ${environment.getProperty("spring_profiles_active")}
             Env Port (local server port): : ${environment.getProperty("local.server.port")}
             Env Port (server port): : ${environment.getProperty("server.port")}
