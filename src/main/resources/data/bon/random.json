@@ -1,0 +1,39 @@
+{
+  "random": "28",
+  "random float": "89.275",
+  "bool": "true",
+  "date": "1988-12-24",
+  "regEx": "helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo to you",
+  "enum": "generator",
+  "firstname": "Steffane",
+  "lastname": "Vastah",
+  "city": "Chişinău",
+  "country": "South Georgia and the South Sandwich Islands",
+  "countryCode": "HU",
+  "email uses current data": "Steffane.Vastah@gmail.com",
+  "email from expression": "Steffane.Vastah@yopmail.com",
+  "array": [
+    "Maud",
+    "Hildegaard",
+    "Margette",
+    "Jeanna",
+    "Gwyneth"
+  ],
+  "array of objects": [
+    {
+      "index": "0",
+      "index start at 5": "5"
+    },
+    {
+      "index": "1",
+      "index start at 5": "6"
+    },
+    {
+      "index": "2",
+      "index start at 5": "7"
+    }
+  ],
+  "Monika": {
+    "age": "86"
+  }
+}
