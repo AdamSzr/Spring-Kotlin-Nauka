@@ -1,4 +1,4 @@
-package exchange.kanga.domain.cache.response
+package exchange.kanga.domain.learn.response
 
 import exchange.kanga.utils.common.Response
 import java.math.BigDecimal

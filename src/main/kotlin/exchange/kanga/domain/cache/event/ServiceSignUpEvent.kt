@@ -1,3 +1,3 @@
-package exchange.kanga.domain.cache.event
+package exchange.kanga.domain.learn.event
 
 data class ServiceSignUpEvent(val serviceName: String)

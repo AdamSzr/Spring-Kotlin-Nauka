@@ -1,9 +1,9 @@
 version: '3.1'
 services:
-  app-cache:
+  app-learn:
     restart: 'always'
-    image: 'localhost:5000/kanga-cache:latest'
+    image: 'localhost:5000/kanga-learn:latest'
     ports:
       - "8885:8085"
-    container_name: 'kanga-cache'
-    command: ["java", "-Dfile.encoding=UTF-8", "-jar", "kanga-cache.jar"]
+    container_name: 'kanga-learn'
+    command: ["java", "-Dfile.encoding=UTF-8", "-jar", "kanga-learn.jar"]

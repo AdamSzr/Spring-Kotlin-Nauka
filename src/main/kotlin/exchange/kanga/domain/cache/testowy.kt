@@ -1,4 +1,4 @@
-package exchange.kanga.domain.cache
+package exchange.kanga.domain.learn
 
 object Testowy {
     fun printsth() {

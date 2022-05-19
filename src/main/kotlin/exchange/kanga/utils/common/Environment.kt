@@ -69,7 +69,7 @@ class Env(private val environment: Environment) {
     body:
     FluxMap
     headers
-    [Content-Type:"application/json", User-Agent:"PostmanRuntime/7.29.0", Accept:"* / *", Cache-Control:"no-cache", Postman-Token:"5717b38f-c7fc-417f-9f40-dda60e3ca2e1", Host:"dev.kanga.team:8882", Accept-Encoding:"gzip, deflate, br", Connection:"keep-alive", content-length:"151"]
+    [Content-Type:"application/json", User-Agent:"PostmanRuntime/7.29.0", Accept:"* / *", Learn-Control:"no-learn", Postman-Token:"5717b38f-c7fc-417f-9f40-dda60e3ca2e1", Host:"dev.kanga.team:8882", Accept-Encoding:"gzip, deflate, br", Connection:"keep-alive", content-length:"151"]
      */
     @GetMapping("/client")
     fun getClientEnv(request: ServerHttpRequest): String {

@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono
 @Component
 class KangaSecurityContextRepository(private val authManager: UserAuthManager): ServerSecurityContextRepository {
 
-    private val TOKEN_PREFIX = "Cache "
+    private val TOKEN_PREFIX = "Learn "
 
     override fun save(swe: ServerWebExchange?, sc: SecurityContext?): Mono<Void> {
         TODO("not implemented")

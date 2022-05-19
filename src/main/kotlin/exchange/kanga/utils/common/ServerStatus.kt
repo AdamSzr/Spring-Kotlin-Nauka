@@ -29,38 +29,38 @@ final class ServerStatusService {
         info("Server Status: ${serverStatus.status} - - - > $serverStatus")
     }
 
-    private fun getStatusOkForCache(cacheType: CacheType): Boolean =
-        serverStatus.statusCache[cacheType] == true
+    private fun getStatusOkForLearn(learnType: LearnType): Boolean =
+        serverStatus.statusLearn[learnType] == true
 
-    fun setStatusOkForCache(cacheType: CacheType) {
-        if (getStatusOkForCache(cacheType)) return
+    fun setStatusOkForLearn(learnType: LearnType) {
+        if (getStatusOkForLearn(learnType)) return
 
-        serverStatus.statusCache[cacheType] = true
+        serverStatus.statusLearn[learnType] = true
 
-        info("Server Status: OFF -> Cache: $cacheType: OK - - - > Caches: ${serverStatus.statusCache.entries}")
+        info("Server Status: OFF -> Learn: $learnType: OK - - - > Learns: ${serverStatus.statusLearn.entries}")
 
-        if (checkAllCacheOk()) setStatus(Status.ON)
+        if (checkAllLearnOk()) setStatus(Status.ON)
     }
 
 
-    private fun checkAllCacheOk(): Boolean = serverStatus.statusCache.values.all { it }
+    private fun checkAllLearnOk(): Boolean = serverStatus.statusLearn.values.all { it }
 
     enum class Status { ON, OFF }
-    enum class CacheType { UNKNOWN }
+    enum class LearnType { UNKNOWN }
 }
 
 data class ServerStatus(
     var status: ServerStatusService.Status,
     @JsonInclude(JsonInclude.Include.NON_NULL) var startupTime: Long? = null,
     val timestamp: Instant = Instant.now(),
-    val statusCache: MutableMap<ServerStatusService.CacheType, Boolean>,
+    val statusLearn: MutableMap<ServerStatusService.LearnType, Boolean>,
     @JsonInclude(JsonInclude.Include.NON_NULL) var message: String? = null,
 ) {
     // Server OFF
     internal constructor(message: String? = null) : this(
         status = ServerStatusService.Status.OFF,
         message = message ?: "restart",
-        statusCache = ServerStatusService.CacheType.values().toList().associateWith { false }.toMutableMap()
+        statusLearn = ServerStatusService.LearnType.values().toList().associateWith { false }.toMutableMap()
     )
 }
 

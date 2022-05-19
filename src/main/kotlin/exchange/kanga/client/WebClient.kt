@@ -1,7 +1,7 @@
 package exchange.kanga.client
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import exchange.kanga.domain.cache.response.SerializeUnknownProblem
+import exchange.kanga.domain.learn.response.SerializeUnknownProblem
 import exchange.kanga.utils.common.Logger
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod

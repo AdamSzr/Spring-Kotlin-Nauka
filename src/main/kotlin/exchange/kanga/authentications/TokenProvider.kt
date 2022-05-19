@@ -14,7 +14,7 @@ import java.util.*
 object TokenProvider {
     private const val ACCESS_TOKEN_VALIDITY_SECONDS = 60L * 60
 
-    private const val SIGNING_KEY: String = "cache:lubieplacki"
+    private const val SIGNING_KEY: String = "learn:lubieplacki"
     private const val ROLES_KEY = "roles"
 
     private val key = Keys.secretKeyFor(SignatureAlgorithm.HS256)

@@ -5,9 +5,9 @@ import exchange.kanga.domain.backoffice.reqres.ServiceLoginRequest
 import exchange.kanga.domain.backoffice.reqres.ServiceLoginResponse
 import exchange.kanga.domain.backoffice.reqres.ServiceSignUpRequest
 import exchange.kanga.domain.backoffice.reqres.ServiceSignUpResponse
-import exchange.kanga.domain.cache.event.ServiceSignUpEvent
-import exchange.kanga.domain.cache.response.AccountExistsFailureResponse
-import exchange.kanga.domain.cache.response.InvalidCredentials
+import exchange.kanga.domain.learn.event.ServiceSignUpEvent
+import exchange.kanga.domain.learn.response.AccountExistsFailureResponse
+import exchange.kanga.domain.learn.response.InvalidCredentials
 import exchange.kanga.utils.common.Response
 import exchange.kanga.utils.common.Service
 import exchange.kanga.utils.common.ServiceRepository
