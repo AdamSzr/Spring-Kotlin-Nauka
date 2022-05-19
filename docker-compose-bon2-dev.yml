@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  app-bon2:
+    restart: 'always'
+    image: 'localhost:5000/kanga-bon2:latest'
+    ports:
+      - "8885:8085"
+    container_name: 'kanga-bon2'
+    command: ["java", "-Dfile.encoding=UTF-8", "-jar", "kanga-bon2.jar"]
