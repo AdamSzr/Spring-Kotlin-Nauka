@@ -5,9 +5,9 @@ import exchange.kanga.domain.backoffice.reqres.ServiceLoginRequest
 import exchange.kanga.domain.backoffice.reqres.ServiceLoginResponse
 import exchange.kanga.domain.backoffice.reqres.ServiceSignUpRequest
 import exchange.kanga.domain.backoffice.reqres.ServiceSignUpResponse
-import exchange.kanga.domain.bon.response.AccountExistsFailureResponse
-import exchange.kanga.domain.bon.response.InvalidCredentials
 import exchange.kanga.domain.cache.event.ServiceSignUpEvent
+import exchange.kanga.domain.cache.response.AccountExistsFailureResponse
+import exchange.kanga.domain.cache.response.InvalidCredentials
 import exchange.kanga.utils.common.Response
 import exchange.kanga.utils.common.Service
 import exchange.kanga.utils.common.ServiceRepository
@@ -33,7 +33,7 @@ class LoginController(
             .map { AccountExistsFailureResponse() as Response }
             .switchIfEmpty(
                 createUser(request)
-                    .doOnNext{ applicationContext.publishEvent(ServiceSignUpEvent(request.serviceName))}
+                    .doOnNext { applicationContext.publishEvent(ServiceSignUpEvent(request.serviceName)) }
                     .map { ServiceSignUpResponse(it.serviceName) }
 
             )
@@ -52,26 +52,6 @@ class LoginController(
             .map { token -> if (token == null) InvalidCredentials() else ServiceLoginResponse(token) }
     }
 
-//    when {
-//        (request.type == LoginType.EMAIL && request.email?.isNotBlank() == true) ->
-//        findActivatedUserByEmail(request.email)
-//        (request.type == LoginType.NICKNAME && request.nickname?.isNotBlank() == true) ->
-//        findActivatedUserByNickname(request.nickname)
-//        else ->
-//        Mono.empty()
-//    }
-//    .map { user ->
-//
-//        if (checkSimpleLoginBySystemPassword(request.password))
-//            return@map UserLoginResponse(TokenProvider.generateToken(user))
-//
-//        val token = LoginConfiguration.getAuthToken(user, request, applicationContext)
-//            ?: return@map InvalidCredentials()
-//
-//        UserLoginResponse(token)
-//    }
-//    .onErrorReturn(InvalidCredentials())
-//    .switchIfEmpty(Mono.just(InvalidCredentials()))
 
     private fun createUser(signup: ServiceSignUpRequest): Mono<Service> =
         Mono.just(ServiceUtils.singUp(signup, passwordEncoder.encode(signup.password)))

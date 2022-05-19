@@ -26,31 +26,6 @@ object TokenProvider {
         .signWith(key)
         .compact()
 
-//    @Deprecated("deprecated methods")
-//    fun generateTokenDeprecated(user: User): String = Jwts.builder()
-//        .signWith(SignatureAlgorithm.HS256, SIGNING_KEY)
-//        .setIssuedAt(Date())
-//        .setExpiration(Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS * 1000))
-//        .setSubject(user.nickname)
-//        .claim(ROLES_KEY, listOf(user.role.name))
-//        .claim(PERMISSIONS_KEY, user.permissions.map(Permission::name))
-//        .compact()
-//
-//    fun generateToken(user: User, customTime: Long? = null): String = Jwts.builder()
-//        .setSubject(user.nickname)
-//        .setIssuedAt(Date())
-//        .setExpiration(Date(System.currentTimeMillis() + (customTime ?: ACCESS_TOKEN_VALIDITY_SECONDS) * 1000L))
-//        .claim(ROLES_KEY, listOf(user.role.name))
-//        .claim(PERMISSIONS_KEY, user.permissions.map(Permission::name))
-//        .signWith(key)
-//        .compact()
-
-
-
-//    init {
-//        println(generateToken(User("jarek", "jarek"), null))
-//    }
-
     fun getUsernameFromToken(token: String): String =
         getClaimFromToken(token) { claims: Claims -> claims.subject }
 
