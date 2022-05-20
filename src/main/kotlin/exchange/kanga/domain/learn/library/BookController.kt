@@ -43,7 +43,7 @@ class BookController(
     }
 
     @GetMapping(value = ["/compute"])
-    fun compute(): Any {
+    fun compute(): Mono<Int> {
         var z = 0;
         var jump = 10;
 
