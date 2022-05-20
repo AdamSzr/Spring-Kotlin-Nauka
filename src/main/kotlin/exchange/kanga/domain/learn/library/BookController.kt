@@ -1,19 +1,22 @@
 package exchange.kanga.domain.learn.library
 
+import exchange.kanga.domain.learn.library.event.BookAddEvent
 import exchange.kanga.domain.learn.library.service.LibrarySvc
 import exchange.kanga.domain.learn.library.structures.BookModel
 import exchange.kanga.utils.UtilTools
+import org.springframework.context.ApplicationContext
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toFlux
-import reactor.kotlin.core.publisher.toMono
 
 
 @RestController
 @RequestMapping("/library")
 class BookController(
-    val librarySvc: LibrarySvc
+    val librarySvc: LibrarySvc,
+    val application: ApplicationContext,
 ) {
 
     @GetMapping(value = ["/test"], produces = ["text/event-stream"])
@@ -64,7 +67,9 @@ class BookController(
 
     @PostMapping
     fun saveBook(@RequestBody bookModel: BookModel): Mono<BookModel> {
-        return librarySvc.saveBook(bookModel)
+           return librarySvc.saveBook(bookModel)
+            .doOnNext { application.publishEvent(BookAddEvent(it)) }
+               .publish { it -> it }
     }
 
 
